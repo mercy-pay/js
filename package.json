@@ -1,0 +1,39 @@
+{
+  "name": "@mercy-pay/js",
+  "version": "0.1.0",
+  "description": "Mercy Pay dans le navigateur : le formulaire de paiement, mobile money et carte, affiché dans votre page.",
+  "keywords": ["mercy pay", "paiement", "checkout", "mobile money", "iframe"],
+  "homepage": "https://docs.mercy-pay.com/payments/embedded",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mercy-pay/js.git"
+  },
+  "bugs": "https://github.com/mercy-pay/js/issues",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "unpkg": "./dist/mercy-pay.js",
+  "jsdelivr": "./dist/mercy-pay.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./cdn": "./dist/mercy-pay.js"
+  },
+  "files": ["dist", "README.md", "LICENSE"],
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.build.json && rm -f dist/cdn.* && esbuild src/cdn.ts --bundle --minify --format=iife --target=es2019 --outfile=dist/mercy-pay.js",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "prepublishOnly": "npm run typecheck && npm test && npm run build"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2",
+    "jsdom": "^26.1.0",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.7"
+  }
+}
