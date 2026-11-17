@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "esbuild": "^0.28.2",
-    "jsdom": "^26.1.0",
+    "jsdom": "^31.0.1",
     "typescript": "^5.9.3",
     "vitest": "^3.2.7"
   }
